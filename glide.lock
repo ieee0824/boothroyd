@@ -1,0 +1,123 @@
+hash: 7f99c7a09ffae58c671b061e0bd0ae89a818c07f465733855c9aa6ce2faf9f8d
+updated: 2017-06-09T11:46:04.24988901+09:00
+imports:
+- name: github.com/aws/aws-sdk-go
+  version: c48c76c996d07c48cddab11a21971c299203d8c1
+  subpackages:
+  - aws
+  - aws/awserr
+  - aws/awsutil
+  - aws/client
+  - aws/client/metadata
+  - aws/corehandlers
+  - aws/credentials
+  - aws/credentials/ec2rolecreds
+  - aws/credentials/endpointcreds
+  - aws/credentials/stscreds
+  - aws/defaults
+  - aws/ec2metadata
+  - aws/endpoints
+  - aws/request
+  - aws/session
+  - aws/signer/v4
+  - internal/shareddefaults
+  - private/protocol
+  - private/protocol/json/jsonutil
+  - private/protocol/jsonrpc
+  - private/protocol/query
+  - private/protocol/query/queryutil
+  - private/protocol/rest
+  - private/protocol/restjson
+  - private/protocol/xml/xmlutil
+  - service/lambda
+  - service/sts
+- name: github.com/BurntSushi/toml
+  version: b26d9c308763d68093482582cea63d69be07a0f0
+- name: github.com/geekypanda/httpcache
+  version: 01f18a9beadcc489be4f89c92e82c02e251268cc
+  subpackages:
+  - cfg
+  - entry
+  - fhttp
+  - fhttp/rule
+  - nethttp
+  - nethttp/rule
+  - ruleset
+  - server
+  - uri
+- name: github.com/go-ini/ini
+  version: e7fea39b01aea8d5671f6858f0532f56e8bff3a5
+- name: github.com/golang/protobuf
+  version: 5a0f697c9ed9d68fef0116532c6e05cfeae00e55
+  subpackages:
+  - proto
+- name: github.com/google/go-github
+  version: 7a51fb928f52a196d5f31daefb8a489453ef54ff
+  subpackages:
+  - github
+- name: github.com/google/go-querystring
+  version: 53e6ce116135b80d037921a7fdd5138cf32d7a8a
+  subpackages:
+  - query
+- name: github.com/hashicorp/go-version
+  version: 03c5bf6be031b6dd45afec16b1cf94fc8938bc77
+- name: github.com/ieee0824/getenv
+  version: 1ce3ee4cef01a33126f6f1acdd676d9e9d94e4f9
+- name: github.com/imdario/mergo
+  version: d806ba8c21777d504a2090a2ca4913c750dd3a33
+- name: github.com/iris-contrib/formBinder
+  version: 81b6a071e35797b83562caf4b3cad24dc01912dc
+- name: github.com/jmespath/go-jmespath
+  version: bd40a432e4c76585ef6b72d3fd96fb9b6dc7b68d
+- name: github.com/kataras/go-errors
+  version: 6fb46ef666f60ce19b5cc73906d531645d5bf8bc
+- name: github.com/klauspost/compress
+  version: f3dce52e0576655d55fd69e74b63da96ad1108f3
+  subpackages:
+  - flate
+  - gzip
+  - zlib
+- name: github.com/klauspost/cpuid
+  version: 09cded8978dc9e80714c4d85b0322337b0a1e5e0
+- name: github.com/microcosm-cc/bluemonday
+  version: e79763773ab6222ca1d5a7cbd9d62d83c1f77081
+- name: github.com/rs/cors
+  version: 8dd4211afb5d08dbb39a533b9bb9e4b486351df6
+- name: github.com/russross/blackfriday
+  version: 0ba0f2b6ed7c475a92e4df8641825cb7a11d1fa3
+- name: github.com/valyala/bytebufferpool
+  version: e746df99fe4a3986f4d4f79e13c1e0117ce9c2f7
+- name: github.com/valyala/fasthttp
+  version: b154429ca951971beae8427b1a918ebce58f64af
+  subpackages:
+  - fasthttputil
+  - stackless
+- name: golang.org/x/crypto
+  version: e7ba82683099cae71475961448ab8f903ea77c26
+  subpackages:
+  - acme
+  - acme/autocert
+- name: golang.org/x/net
+  version: 3da985ce5951d99de868be4385f21ea6c2b22f24
+  subpackages:
+  - context
+  - html
+  - html/atom
+- name: google.golang.org/appengine
+  version: a2f4131514e563cedfdb6e7d267df9ad48591e93
+  subpackages:
+  - internal
+  - internal/app_identity
+  - internal/base
+  - internal/datastore
+  - internal/log
+  - internal/modules
+  - internal/remote_api
+- name: gopkg.in/kataras/iris.v6
+  version: 09a2066268f99fc8ee40ecddde8b415f76250f4b
+  subpackages:
+  - adaptors/cors
+  - adaptors/httprouter
+- name: gopkg.in/yaml.v2
+  version: cd8b52f8269e0feb286dfeef29f8fe4d5b397e0b
+testImports: []
