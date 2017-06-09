@@ -2,15 +2,16 @@ package queue
 
 import (
 	"time"
+	"github.com/ieee0824/getenv"
 )
 
-const (
-	MAX_QUEUE_SIZE = 1 *1024 * 1024
+var (
+	MAX_QUEUE_SIZE = getenv.Int("MAX_QUEUE_SIZE", 1 * 1024 * 1024)
 )
 
 type innerQueue struct {
 	data chan interface{}
-	status int
+	status []interface{}
 	c chan interface{}
 	delay time.Duration
 	lastDeque time.Time
@@ -19,7 +20,7 @@ type innerQueue struct {
 func newInnnerQueue() *innerQueue {
 	return &innerQueue {
 		make(chan interface{}, MAX_QUEUE_SIZE),
-		0,
+		[]interface{}{},
 		make(chan interface{}),
 		5 * time.Second,
 		time.Now().AddDate(-1,0,0),
@@ -28,7 +29,7 @@ func newInnnerQueue() *innerQueue {
 
 func (q *innerQueue) enqueue(i interface{}) {
 	q.data <- i
-	q.status ++
+	q.status = append(q.status, string(i.([]byte)))
 }
 
 func (q *innerQueue) dequeue() chan interface{} {
@@ -42,7 +43,7 @@ func (q *innerQueue) dequeue() chan interface{} {
 				}
 			}
 			q.c <- d
-			q.status --
+			q.status = q.status[1:]
 			q.lastDeque = time.Now()
 		}
 	}()
@@ -80,8 +81,10 @@ func (q *Queue) Enqueue(key string, i interface{}) {
 func (q *Queue) Status() map[string]interface{} {
 	var r = map[string]interface{}{}
 	for k, v := range q.data {
-		r[k] = v.status
-		r[k] = v.status
+		r[k] = map[string]interface{}{
+			"len": len(v.status),
+			"targets": v.status,
+		}
 	}
 	return r
 }
