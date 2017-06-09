@@ -37,10 +37,8 @@ func (q *innerQueue) dequeue() chan interface{} {
 		for {
 			d := <- q.data
 
-			if time.Now().Sub(q.lastDeque) < q.delay {
-				for time.Now().Sub(q.lastDeque) < q.delay {
-					time.Sleep(q.delay - time.Now().Sub(q.lastDeque))
-				}
+			for time.Now().Sub(q.lastDeque) < q.delay {
+				time.Sleep(q.delay - time.Now().Sub(q.lastDeque))
 			}
 			q.c <- d
 			q.status = q.status[1:]
