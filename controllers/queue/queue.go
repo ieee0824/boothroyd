@@ -11,6 +11,7 @@ import (
 	"github.com/aws/aws-sdk-go/service/lambda"
 	"github.com/aws/aws-sdk-go/aws"
 	"net/url"
+	"log"
 )
 
 var qs = queue.New()
@@ -55,48 +56,55 @@ func Check(ctx *iris.Context) {
 }
 
 func Enqueue(ctx *iris.Context) {
-	var w = &work.Work{}
-	if err := ctx.ReadJSON(w); err != nil {
+	var ws = []work.Work{}
+	if err := ctx.ReadJSON(&ws); err != nil {
+		log.Println(err)
 		ctx.JSON(
 			500,
 			map[string]interface{}{
 				"status": false,
-				"error": err,
+				"error": err.Error(),
 			},
 		)
 		return
 	}
-	u, err := url.Parse(w.URL)
-	if err != nil {
-		ctx.JSON(
-			500,
-			map[string]interface{}{
-				"status": false,
-				"error": err,
-			},
-		)
-		return
+	for _, w := range ws {
+		u, err := url.Parse(w.URL)
+		if err != nil {
+			log.Println(err)
+			ctx.JSON(
+				500,
+				map[string]interface{}{
+					"status": false,
+					"error": err.Error(),
+				},
+			)
+			return
+		}
+
+		w.JobID = fmt.Sprint(time.Now().UnixNano())
+		if bin, err := json.Marshal(w); err != nil {
+			log.Println(err)
+			ctx.JSON(
+				500,
+				map[string]interface{}{
+					"status": false,
+					"error": err.Error(),
+				},
+			)
+			return
+		} else {
+			qs.Enqueue(u.Host, bin)
+		}
 	}
 
-	w.JobID = fmt.Sprint(time.Now().UnixNano())
-	if bin, err := json.Marshal(w); err != nil {
-		ctx.JSON(
-			500,
-			map[string]interface{}{
-				"status": false,
-				"error": err,
-			},
-		)
-		return
-	} else {
-		qs.Enqueue(u.Host, bin)
-	}
 
 	ctx.JSON(
 		200,
 		map[string]interface{}{
 			"status": true,
 			"error": nil,
+			"data": ws,
 		},
 	)
 }
