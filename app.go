@@ -5,7 +5,12 @@ import (
 	"gopkg.in/kataras/iris.v6/adaptors/httprouter"
 	"gopkg.in/kataras/iris.v6/adaptors/cors"
 	"github.com/jobtalk/hawkeye/controllers/queue"
+	"runtime"
 )
+
+func init() {
+	runtime.GOMAXPROCS(runtime.NumCPU())
+}
 
 func main() {
 	app := iris.New()
