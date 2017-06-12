@@ -22,14 +22,14 @@ func newInnnerQueue() *innerQueue {
 		make(chan interface{}, MAX_QUEUE_SIZE),
 		[]interface{}{},
 		make(chan interface{}),
-		5 * time.Second,
+		time.Duration(int64(getenv.Int("DELAY_TIME", 5))) * time.Second,
 		time.Now().AddDate(-1,0,0),
 	}
 }
 
 func (q *innerQueue) enqueue(i interface{}) {
 	q.data <- i
-	q.status = append(q.status, string(i.([]byte)))
+	q.status = append(q.status, i)
 }
 
 func (q *innerQueue) dequeue() chan interface{} {
