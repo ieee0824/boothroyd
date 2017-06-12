@@ -1,3 +1,3 @@
 # riley
 
-スケジューラ
+Speed ​​limited queue library.
