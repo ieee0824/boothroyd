@@ -76,6 +76,10 @@ func (q *Queue) Enqueue(key string, i interface{}) {
 	}()
 }
 
+func (q *Queue) Dequeue() interface{} {
+	return <- q.C
+}
+
 func (q *Queue) Status() map[string]interface{} {
 	var r = map[string]interface{}{}
 	for k, v := range q.data {
