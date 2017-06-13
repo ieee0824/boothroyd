@@ -1,3 +1,3 @@
-# riley
+# boothroyd
 
 Speed ​​limited queue library.
