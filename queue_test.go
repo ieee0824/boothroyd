@@ -1,4 +1,4 @@
-package riley
+package boothroyd
 
 import (
 	"testing"

@@ -3,7 +3,7 @@ jobs:
     build:
         docker:
             - image: golang:1.8.3
-        working_directory: /go/src/github.com/ieee0824/riley
+        working_directory: /go/src/github.com/ieee0824/boothroyd
         steps:
             - checkout
             - run:
