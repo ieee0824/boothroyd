@@ -53,6 +53,8 @@ type Queue struct {
 	data map[string]*innerQueue
 }
 
+var Desmond = New
+
 func New()*Queue {
 	return &Queue{
 		make(chan interface{}),
