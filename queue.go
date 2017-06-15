@@ -25,7 +25,7 @@ func newInnnerQueue() *innerQueue {
 		make(chan interface{}, MAX_QUEUE_SIZE),
 		[]interface{}{},
 		make(chan interface{}),
-		time.Duration(int64(getenv.Int("DELAY_TIME", 1))) * time.Second,
+		time.Duration(int64(getenv.Int("DELAY_TIME", 5))) * time.Second,
 		time.Now().AddDate(-1,0,0),
 		false,
 	}
